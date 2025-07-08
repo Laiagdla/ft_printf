@@ -6,55 +6,33 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:34:29 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/04 09:22:24 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/08 16:46:05 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <sys/types.h>
+#include "ft_printf.h"
 
-typedef ssize_t	(*t_format_ptr)(va_list *ap);
 
-ssize_t	print_char(va_list *ap)
+static void	map_functions(t_format_ptr *format_map)
 {
-	char	c;
-
-	c = (char)va_arg(*ap, int);
-	return (write(1, &c, 1));
+	ft_bzero(format_map, 127);
+	format_map['c'] = ft_print_char;
+	format_map['s'] = ft_print_str;
 }
 
-ssize_t	print_str(va_list *ap)
+static ssize_t	format_selector(va_list *ap, char c)
 {
-	char	*str;
-	ssize_t	len;
-
-	str = va_arg(*ap, char *);
-	if (str == NULL)
-		return (write(1, "(null)", 6));
-	else
-	{
-		len = 0;
-		while (*str)
-			len += write(1, str++, 1);
-		return (len);
-	}
-}
-
-ssize_t	format_selector(va_list *ap, char c)
-{
-	t_format_ptr	format_map[127] = {NULL};
+	t_format_ptr	format_map[127];
 	ssize_t			len;
 
+	map_functions(format_map);
 	len = 0;
-	format_map['s'] = print_str;
-	format_map['c'] = print_char;
 	if (format_map[(int)c])
 		len += format_map[(int)c](ap);
 	return (len);
 }
 
-void	my_printf(const char *str, ...)
+void	ft_printf(const char *str, ...)
 {
 	va_list		args;
 	ssize_t		len;
@@ -70,10 +48,4 @@ void	my_printf(const char *str, ...)
 		str++;
 	}
 	va_end(args);
-}
-
-int	main(void)
-{
-	my_printf("Hello, %s! You have new messages.\n", "Alice");
-	return (0);
 }
