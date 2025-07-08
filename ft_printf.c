@@ -6,7 +6,7 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:34:29 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/06/23 15:42:46 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/04 09:22:24 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ssize_t	print_str(va_list *ap)
 	}
 }
 
-ssize_t	format_sel(va_list *ap, char c)
+ssize_t	format_selector(va_list *ap, char c)
 {
 	t_format_ptr	format_map[127] = {NULL};
 	ssize_t			len;
@@ -49,7 +49,6 @@ ssize_t	format_sel(va_list *ap, char c)
 	len = 0;
 	format_map['s'] = print_str;
 	format_map['c'] = print_char;
-
 	if (format_map[(int)c])
 		len += format_map[(int)c](ap);
 	return (len);
@@ -65,7 +64,7 @@ void	my_printf(const char *str, ...)
 	while (*str != 0)
 	{
 		if (*str == '%')
-			len += format_sel(&args, *(++str));
+			len += format_selector(&args, *(++str));
 		else
 			len += write(1, str, 1);
 		str++;
