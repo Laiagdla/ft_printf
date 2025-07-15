@@ -6,7 +6,7 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:41:01 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/14 16:03:38 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:28:42 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static ssize_t	ft_putnbr(int n)
 
 	len = 0;
 	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
+		return (len += write(1, "-2147483648", 11));
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		len += write(1, "-", 1);
 		n *= -1;
 	}
 	if (n > 9)
 		len += ft_putnbr(n / 10);
-	ft_putint(n % 10);
+	len += ft_putint(n % 10);
 	return (len);
 }
 

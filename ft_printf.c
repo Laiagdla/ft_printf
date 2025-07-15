@@ -6,12 +6,11 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:34:29 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/14 16:00:35 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:08:28 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static void	map_functions(t_format_ptr *format_map)
 {
@@ -39,7 +38,7 @@ static ssize_t	format_selector(va_list *ap, char c)
 	return (len);
 }
 
-void	ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list		args;
 	ssize_t		len;
@@ -60,4 +59,5 @@ void	ft_printf(const char *str, ...)
 		str++;
 	}
 	va_end(args);
+	return ((int)len);
 }

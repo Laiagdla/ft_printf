@@ -6,7 +6,7 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:06:29 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/14 15:59:39 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:33:25 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,17 @@ static ssize_t	ft_puthex(uintptr_t nb, const char format)
 		len += ft_putchar(nb + '0');
 	else
 		len += ft_putchar(nb - 10 + style);
-	return (len + 1);
+	return (len);
 }
-
 
 ssize_t	ft_print_hex(va_list *ap)
 {
-	return (ft_puthex(va_arg(*ap, int), 'x'));
+	return (ft_puthex(va_arg(*ap, unsigned int), 'x'));
 }
 
 ssize_t	ft_print_hex_up(va_list *ap)
 {
-	return (ft_puthex(va_arg(*ap, int), 'X'));
+	return (ft_puthex(va_arg(*ap, unsigned int), 'X'));
 }
 
 ssize_t	ft_print_ptr(va_list *ap)

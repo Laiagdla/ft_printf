@@ -6,7 +6,7 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:36:34 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/14 16:01:03 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:59:11 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ ssize_t	ft_print_uint(va_list *ap);
 ssize_t	ft_print_ptr(va_list *ap);
 ssize_t	ft_print_hex(va_list *ap);
 ssize_t	ft_print_hex_up(va_list *ap);
-void	ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 
 #endif
