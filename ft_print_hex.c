@@ -6,7 +6,7 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:06:29 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/15 14:33:25 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:48:06 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ ssize_t	ft_print_ptr(va_list *ap)
 	uintptr_t	address;
 
 	address = (uintptr_t)va_arg(*ap, void *);
+	if (address == 0)
+		return (write(1, "(nil)", 5));
 	return (write(1, "0x", 2) + ft_puthex(address, 'x'));
 }

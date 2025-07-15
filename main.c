@@ -6,7 +6,7 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:44:43 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/15 14:24:39 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:08:47 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	main(void)
 	len = printf("%% Hi, %s%c, You have %i messages and %d new %x, %X, %p,\n",
 		"Laia", '!', 23, 3, 234, 432, &c);
 	ft_printf("%d\n", len);
-	// ft_printf("%p\n", -1);
-	ft_printf("%d", 0);
-	printf("%d", 0);
+
+	ft_printf("%p", NULL);
+	printf("%p", NULL);
 	return (0);
 }
