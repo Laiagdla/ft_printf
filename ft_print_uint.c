@@ -6,13 +6,13 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:38:42 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/15 14:40:15 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:14:38 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static ssize_t	ft_putint(int nb)
+static int	ft_putint(int nb)
 {
 	char	c;
 
@@ -20,9 +20,9 @@ static ssize_t	ft_putint(int nb)
 	return (write(1, &c, 1));
 }
 
-static ssize_t	ft_putnbr_unsigned(unsigned int n)
+static int	ft_putnbr_unsigned(unsigned int n)
 {
-	ssize_t	len;
+	int	len;
 
 	len = 0;
 	if (n < 0)
@@ -36,7 +36,7 @@ static ssize_t	ft_putnbr_unsigned(unsigned int n)
 	return (len);
 }
 
-ssize_t	ft_print_uint(va_list *ap)
+int	ft_print_uint(va_list *ap)
 {
 	return (ft_putnbr_unsigned((unsigned int)va_arg(*ap, int)));
 }

@@ -6,16 +6,16 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:41:34 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/15 13:55:02 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:14:26 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	ft_print_str(va_list *ap)
+int	ft_print_str(va_list *ap)
 {
 	char	*str;
-	ssize_t	len;
+	int		len;
 
 	str = va_arg(*ap, char *);
 	if (str == NULL)

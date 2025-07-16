@@ -6,20 +6,20 @@
 /*   By: lgrobe-d <lgrobe-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:06:29 by lgrobe-d          #+#    #+#             */
-/*   Updated: 2025/07/15 14:48:06 by lgrobe-d         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:17:47 by lgrobe-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static ssize_t	ft_putchar(char c)
+static int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
-static ssize_t	ft_puthex(uintptr_t nb, const char format)
+static int	ft_puthex(uintptr_t nb, const char format)
 {
-	ssize_t	len;
+	int		len;
 	char	style;
 
 	len = 0;
@@ -36,17 +36,17 @@ static ssize_t	ft_puthex(uintptr_t nb, const char format)
 	return (len);
 }
 
-ssize_t	ft_print_hex(va_list *ap)
+int	ft_print_hex(va_list *ap)
 {
 	return (ft_puthex(va_arg(*ap, unsigned int), 'x'));
 }
 
-ssize_t	ft_print_hex_up(va_list *ap)
+int	ft_print_hex_up(va_list *ap)
 {
 	return (ft_puthex(va_arg(*ap, unsigned int), 'X'));
 }
 
-ssize_t	ft_print_ptr(va_list *ap)
+int	ft_print_ptr(va_list *ap)
 {
 	uintptr_t	address;
 

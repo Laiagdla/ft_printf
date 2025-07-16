@@ -5,7 +5,6 @@ RM		=	rm -rf
 NAME	=	libftprintf.a
 
 SRC 	=	ft_printf.c \
-			ft_bzero.c \
 			ft_print_char.c \
 			ft_print_str.c \
 			ft_print_int.c \
